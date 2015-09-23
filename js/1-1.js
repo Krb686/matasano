@@ -11,19 +11,21 @@ module.exports = {
 
 
     var BASE_64 =  [ "A","B","C","D","E","F","G","H",
-                      "I","J","K","L","M","N","O","P",
-                      "Q","R","S","T","U","V","W","X",
-                      "Y","Z","a","b","c","d","e","f",
-                      "g","h","i","j","k","l","m","n",
-                      "o","p","q","r","s","t","u","v",
-                      "w","x","y","z","0","1","2","3",
-                      "4","5","6","7","8","9","+","/"
+                     "I","J","K","L","M","N","O","P",
+                     "Q","R","S","T","U","V","W","X",
+                     "Y","Z","a","b","c","d","e","f",
+                     "g","h","i","j","k","l","m","n",
+                     "o","p","q","r","s","t","u","v",
+                     "w","x","y","z","0","1","2","3",
+                     "4","5","6","7","8","9","+","/"
                    ];
 
+    // Add padding 0's if necessary to keep length a multiple of 3
     if(base16String.length % 3 != 0){
       base16String = Array((base16String.length % 3)+1).join("0") + base16String;
     }
 
+    // Loop through input string 
     for(var i=0;i<base16String.length;i+=3){
       subString = base16String.substring(i,i+3);
 
