@@ -5,7 +5,7 @@ module.exports = (function(){
 
     // English language letter frequency * 100
     // See http://www.macfreek.nl/memory/Letter_Distribution
-    this.letterFrequency = {
+    var letterFrequency = {
         " ":183,
         "a":65,
         "b":13,
@@ -35,38 +35,40 @@ module.exports = (function(){
         "z":1
     };
 
-    this.scoreText = function(string){
-        var score = 0;
-        var freq = {};
+    return {
+        scoreText: function(string){
+            var score = 0;
+            var freq = {};
 
-        // Count occurences of each character
-        for(var i=0;i<string.length;i++){
-            if(!freq.hasOwnProperty(string[i])){
-                freq[string[i]] = 0;
+            // Count occurences of each character
+            for(var i=0;i<string.length;i++){
+                if(!freq.hasOwnProperty(string[i])){
+                    freq[string[i]] = 0;
+                }
+                freq[string[i]]++;
             }
-            freq[string[i]]++;
-        }
-        freq["total"] = string.length;
+            freq["total"] = string.length;
 
 
-        // Compute error for each frequency
-        for(var property in freq){
-            if(freq.hasOwnProperty(property)){
-                console.log("Computing: " + freq[property] + " / " + freq["total"]);
-                var freqInt = Math.round(freq[property] / freq["total"] * 100);
-                var error =
-                console.log(error);
+            // Compute error for each frequency
+            for(var property in freq){
+                if(freq.hasOwnProperty(property)){
+                    console.log("Computing: " + freq[property] + " / " + freq["total"]);
+                    var freqInt = Math.round(freq[property] / freq["total"] * 100);
+                    console.log(freqInt);
+                }
             }
+
+
+
+            return score;
+
+        },
+
+        findBestScore: function(strings){
+            return 0;
         }
-
-
-
-        return score;
-    };
-
-    this.findBestScore = function(strings){
-
-    };
+    }
 
 })();
 
@@ -113,9 +115,9 @@ for(var i=0;i<256;i++){
 
   char_freq["total"] = ascii_string.length;
   test_cases[c] = char_freq;
-  console.log(output);
-  console.log(char_freq);
-  console.log("\n");
+  //console.log(output);
+  //console.log(char_freq);
+  //console.log("\n");
   //console.log(score);
   //console.log("\n");
   if(score > highest_score){
@@ -123,7 +125,8 @@ for(var i=0;i<256;i++){
     winner = output;
   }
 }
-console.log(winner);
+//console.log(winner);
+console.log(module.exports);
 module.exports.scoreText(ascii_string);
 
 
