@@ -1,4 +1,61 @@
-// Matasano challenge #2
+// Matasano challenge #3
+
+
+module.exports = {a
+    letterFrequency: {
+        " ":183,
+        "a":65,
+        "b":13,
+        "c":22,
+        "d":33,
+        "e":104,
+        "f":20,
+        "g":16,
+        "h":50,
+        "i":57,
+        "j":1,
+        "k":6,
+        "l":33,
+        "m":20,
+        "n":57,
+        "o":62,
+        "p":15,
+        "q":0,
+        "r":50,
+        "s":53,
+        "t":76,
+        "u":23,
+        "v":8,
+        "w":17,
+        "x":1,
+        "y":14,
+        "z":1
+    },
+
+    scoreText: function(string){
+
+        var score = 0;
+        var freq = {};
+        for(var i=0;i<string.length;i++){
+            if(!freq.hasOwnProperty(string[i])){
+                freq[string[i]] = 0;
+            }
+            freq[string[i]]++;
+        }
+        freq["total"] = string.length;
+
+        // Compute error for each frequency
+        for(
+
+        
+
+        return score;
+    },
+
+    findBestScore: function(strings){
+
+    }
+};
 
 var charSet = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
