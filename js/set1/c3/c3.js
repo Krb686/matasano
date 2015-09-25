@@ -1,8 +1,11 @@
 // Matasano challenge #3
 
 
-module.exports = {a
-    letterFrequency: {
+module.exports = (function(){
+
+    // English language letter frequency * 100
+    // See http://www.macfreek.nl/memory/Letter_Distribution
+    this.letterFrequency = {
         " ":183,
         "a":65,
         "b":13,
@@ -30,12 +33,13 @@ module.exports = {a
         "x":1,
         "y":14,
         "z":1
-    },
+    };
 
-    scoreText: function(string){
-
+    this.scoreText = function(string){
         var score = 0;
         var freq = {};
+
+        // Count occurences of each character
         for(var i=0;i<string.length;i++){
             if(!freq.hasOwnProperty(string[i])){
                 freq[string[i]] = 0;
@@ -44,18 +48,27 @@ module.exports = {a
         }
         freq["total"] = string.length;
 
-        // Compute error for each frequency
-        for(
 
-        
+        // Compute error for each frequency
+        for(var property in freq){
+            if(freq.hasOwnProperty(property)){
+                console.log("Computing: " + freq[property] + " / " + freq["total"]);
+                var freqInt = Math.round(freq[property] / freq["total"] * 100);
+                var error =
+                console.log(error);
+            }
+        }
+
+
 
         return score;
-    },
+    };
 
-    findBestScore: function(strings){
+    this.findBestScore = function(strings){
 
-    }
-};
+    };
+
+})();
 
 var charSet = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -111,6 +124,7 @@ for(var i=0;i<256;i++){
   }
 }
 console.log(winner);
+module.exports.scoreText(ascii_string);
 
 
 function convertHexToAscii(string){
