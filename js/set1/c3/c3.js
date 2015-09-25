@@ -2,8 +2,8 @@
 
 var charSet = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-var Utility1 = require("./1-1.js");
-var Utility2 = require("./1-2.js");
+var Utility1 = require("../c1/c1.js");
+var Utility2 = require("../c2/c2.js");
 
 var string = "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736";
 
