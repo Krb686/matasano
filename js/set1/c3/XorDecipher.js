@@ -1,32 +1,32 @@
 var ScoreFinder = require('./ScoreFinder.js');
+var Converter = require('./Converter.js');
 
 module.exports = (function(){
 
     
     function decipherString(string){
+        var asciiString = Converter.convertHexToAscii(string);
 
-        var textLength = string.length / 2;
+        var testArray = [];
 
         // Loop through 256 character possibilities
         for(var i=0;i<256;i++){
             c = String.fromCharCode(i);
-            testString = Array(textLength).join(c);
+            testString = Array(asciiString).join(c);
 
             var output = ""
 
             // Loop through each character in the input string
-            for(var j=0;j<textLength;j++){
-                var numeric_result = ascii_string[j].charCodeAt(0)^c.charCodeAt(0);
+            for(var j=0;j<asciiString.length;j++){
+                var numeric_result = asciiString[j].charCodeAt(0)^c.charCodeAt(0);
                 plain_char = String.fromCharCode(numeric_result);
                 output += plain_char;
             }
-        testArray.push(output);
-       }
-    }
+            testArray.push(output);
+        }
 
-}
-
-
+        var results = ScoreFinder.findBestScore(testArray);
+        return results;
 
     }
 
@@ -35,4 +35,4 @@ module.exports = (function(){
     };
 
 
-});
+})();
