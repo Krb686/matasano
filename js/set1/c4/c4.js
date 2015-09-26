@@ -1,18 +1,12 @@
-var  ScoreFinder = require('../c3/ScoreFinder.js');
+var XorDecipher = require('../c3/XorDecipher.js');
 var fs = require('fs');
 
 
-var lineArray = [];
+var resultsArray = [];
 fs.readFileSync('./input').toString().split('\n').forEach(function(line){
-  lineArray.push(line);
+    var results = XorDecipher.decipherString(line);
+    resultsArray.push(results);
+
+    console.log("Text: " + results[0]);
+    console.log("Score: " + results[1]);
 });
-
-var results = ScoreFinder.findBestScore(lineArray);
-
-console.log(results[0]);
-console.log(results[1]);
-
-
-
-
-
