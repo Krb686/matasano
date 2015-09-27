@@ -6,14 +6,11 @@ module.exports = (function(){
         var output = "";
         for(var i=0;i<plainString.length;i++){
             var num = plainString[i].charCodeAt(0)^key[(i%key.length)].charCodeAt(0);
-            var c = String.fromCharCode(num);
-            console.log(c);
-            output += c;
+            var hexChar = num.toString(16);
+            output += hexChar;
         }
 
         return output;
-
-
     }
 
 
