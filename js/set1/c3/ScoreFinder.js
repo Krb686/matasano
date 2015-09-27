@@ -82,6 +82,7 @@ module.exports = (function(){
                 highest = score;
                 best = string;
             }
+            //console.log(string + " = " + score);
         }
         return [best, highest];
     }
