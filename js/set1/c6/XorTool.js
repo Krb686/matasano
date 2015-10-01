@@ -1,5 +1,6 @@
 var Hamming = require('./Hamming.js');
 var Converter = require('../c1/Converter.js');
+var XorDecipher = require('../c3/XorDecipher.js');
 
 module.exports = (function(){
 
@@ -33,14 +34,26 @@ module.exports = (function(){
 
         }
 
+        console.log("Base 16 string: " + base16String);
+
         var textArray = subdivideText(base16String);
-        console.log(textArray);
+        //console.log(textArray);
         var textArray = transposeArray(textArray);
-        console.log(textArray);
+        //console.log(textArray);
 
 
         console.log("Suspected key size = " + suspectedKeySize);
-        
+
+        // Solve
+        var resultsArray = [];
+        for(var i=0;i<textArray.length;i++){
+            results = XorDecipher.decipherString(textArray[i]);
+            console.log("Result = " + results[0]);
+            console.log("Score=  " + results[1]);
+            resultsArray.push(results);
+        }
+
+        //console.log(resultsArray);
     }
 
     function subdivideText(base16String){
@@ -64,7 +77,7 @@ module.exports = (function(){
 
         //krb - check to make sure length of each element is the same
         for(var i=0;i<textArray.length;i++){
-            for(var j=0;j<array.length;j++){
+            for(var j=0;j<textArray[0].length;j++){
                 console.log(j);
                 if(!array[j]){
                     array[j] = "";
