@@ -6,6 +6,7 @@ module.exports = (function(){
 
     var KEY_MIN=2;
     var KEY_MAX=40;
+    var BLOCK_AVG_COUNT=2;
 
     function breakRepeatingKeyXor(base64String){
 
@@ -17,6 +18,8 @@ module.exports = (function(){
         var suspectedKeySize = 0;
 
         for(var i=KEY_MIN;i<=KEY_MAX;i++){
+            var normalizedHammingAvg = 0;
+            for(var j=0;j<BLOCK_AVG_COUNT;j++){{
             var sub1 = base16String.substring(0, i);
             var sub2 = base16String.substring(i, 2*i);
             var sub3 = base16String.substring(2*i, 3*i);
@@ -26,7 +29,7 @@ module.exports = (function(){
             var normalizedHammingDist2 = Hamming.computeHammingDistance(sub3, sub4) / i;
 
             var avg = (normalizedHammingDist1 + normalizedHammingDist2) / 2;
-
+            console.log(avg);
             if(avg < smallest){
                 smallest = avg;
                 suspectedKeySize = i;
@@ -47,13 +50,14 @@ module.exports = (function(){
         // Solve
         var resultsArray = [];
         for(var i=0;i<textArray.length;i++){
-            results = XorDecipher.decipherString(textArray[i]);
-            console.log("Result = " + results[0]);
-            console.log("Score=  " + results[1]);
+            //console.log("Solving: " + textArray[i]);
+            results = XorDecipher.decipherString(textArray[i], "histogram");
+            //console.log("Result = " + results[0]);
+            //console.log("Score=  " + results[1]);
             resultsArray.push(results);
         }
 
-        //console.log(resultsArray);
+        console.log(resultsArray);
     }
 
     function subdivideText(base16String){
@@ -78,7 +82,6 @@ module.exports = (function(){
         //krb - check to make sure length of each element is the same
         for(var i=0;i<textArray.length;i++){
             for(var j=0;j<textArray[0].length;j++){
-                console.log(j);
                 if(!array[j]){
                     array[j] = "";
                 }

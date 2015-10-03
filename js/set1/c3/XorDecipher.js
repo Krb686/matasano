@@ -4,7 +4,7 @@ var Converter = require('./Converter.js');
 module.exports = (function(){
 
     
-    function decipherString(string){
+    function decipherString(string, model){
         var asciiString = Converter.convertHexToAscii(string);
 
         var testArray = [];
@@ -25,7 +25,7 @@ module.exports = (function(){
             testArray.push(output);
         }
 
-        var results = ScoreFinder.findBestScore(testArray);
+        var results = ScoreFinder.findBestScore(testArray, model);
         return results;
 
     }

@@ -6,7 +6,7 @@ var fs = require('fs');
 var resultsArray = [];
 fs.readFileSync('./input').toString().split('\n').forEach(function(line){
     if(line != ""){
-        var results = XorDecipher.decipherString(line);
+        var results = XorDecipher.decipherString(line, "similarity");
         resultsArray.push(results[0]);
     }
 
@@ -15,7 +15,7 @@ fs.readFileSync('./input').toString().split('\n').forEach(function(line){
 });
 
 //console.log(resultsArray);
-var bestResult = ScoreFinder.findBestScore(resultsArray);
+var bestResult = ScoreFinder.findBestScore(resultsArray, "similarity");
 
 console.log("Best result string: " + bestResult[0]);
 console.log("Best result score: " + bestResult[1]);
